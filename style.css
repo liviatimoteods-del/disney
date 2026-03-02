@@ -124,3 +124,36 @@ body {
     padding: 0;
 }
 
+.chao {
+ 
+    background: linear-gradient(
+  to bottom,
+  #00125c 0%,
+  #00125c 40%,
+  #1FA6D8 75%,
+  #0D5C8C 100%
+
+);
+    background-color: #001152;
+    color: #b3c2cb;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.chao img{
+    width: 300px;
+    height: 300px;
+    padding: auto;
+}
+
+.footer {
+    
+    background-color: #0c4b71;
+    color: #b3c2cb;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

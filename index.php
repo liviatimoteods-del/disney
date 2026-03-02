@@ -1,5 +1,5 @@
 <?php
-$url = "https://api.disneyapi.dev/character?pageSize=100";
+$url = "https://api.disneyapi.dev/character?pageSize=10";
 $context = stream_context_create(['http' => ['timeout' => 10]]);
 $response = @file_get_contents($url, false, $context);
 $data = $response ? json_decode($response, true) : null;
@@ -45,6 +45,16 @@ $personagens = $data['data'] ?? [];
                 </div>
             
         <?php endforeach; ?>
+    </div>
+
+    <div class="chao">
+
+        <img src="castelo.png" alt="disney" class="disney"/>
+
+    </div>
+
+    <div class="footer">
+        <p>Guia de personagens da Disney</p>
     </div>
 
 </body>
