@@ -1,9 +1,16 @@
 <?php
-$url = "https://api.disneyapi.dev/character?pageSize=10";
+
+$paginaAtual = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($paginaAtual < 1) $paginaAtual = 1;
+
+$url = "https://api.disneyapi.dev/character?pageSize=50&page=" . $paginaAtual;
+
 $context = stream_context_create(['http' => ['timeout' => 10]]);
 $response = @file_get_contents($url, false, $context);
 $data = $response ? json_decode($response, true) : null;
+
 $personagens = $data['data'] ?? [];
+$totalPaginas = $data['info']['totalPages'] ?? 190; 
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +18,7 @@ $personagens = $data['data'] ?? [];
 <head>
     <meta charset="UTF-8">
     <title>Disney Characters</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css?v=<?php echo rand();?>" type="text/css" rel="stylesheet">
 </head>
 <body>
 
@@ -47,15 +54,33 @@ $personagens = $data['data'] ?? [];
         <?php endforeach; ?>
     </div>
 
+    <ul class="pagination">
+        <?php if($paginaAtual > 1): ?>
+            <li><a href="?page=<?php echo $paginaAtual - 1; ?>">&laquo;</a></li>
+        <?php endif; ?>
+
+        <?php 
+        $inicio = max(1, $paginaAtual - 2);
+        $fim = min($totalPaginas, $paginaAtual + 2);
+        for ($i = $inicio; $i <= $fim; $i++): 
+        ?>
+            <li class="<?php echo ($i == $paginaAtual) ? 'active' : ''; ?>">
+                <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+            </li>
+        <?php endfor; ?>
+
+        <?php if($paginaAtual < $totalPaginas): ?>
+            <li><a href="?page=<?php echo $paginaAtual + 1; ?>">&raquo;</a></li>
+        <?php endif; ?>
+    </ul>
+
     <div class="chao">
-
-        <img src="castelo.png" alt="disney" class="disney"/>
-
+         <img src="castelo.png" alt="chao" class="chao"/>
     </div>
-
-    <div class="footer">
-        <p>Guia de personagens da Disney</p>
-    </div>
+    
+    <div class="footer"> 
+        <p>@ Direitos Reservados</p>
+    </div> 
 
 </body>
 </html>
@@ -80,3 +105,5 @@ $personagens = $data['data'] ?? [];
         });
     });
     </script>
+
+   

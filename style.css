@@ -14,7 +14,7 @@ body {
     background: linear-gradient(
   to bottom,
   #0D5C8C 10%,
-  #719db8 70%,
+  #719db8 80%,
   #00125c 100% 
   
 );  
@@ -35,8 +35,6 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 }
-
-
 
 .disney {
     text-align: center;
@@ -132,7 +130,6 @@ body {
   #00125c 40%,
   #1FA6D8 75%,
   #0D5C8C 100%
-
 );
     background-color: #001152;
     color: #b3c2cb;
@@ -142,18 +139,64 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.chao img{
-    width: 300px;
-    height: 300px;
-    padding: auto;
+.chao {
+    
+ background: linear-gradient(
+  to bottom,
+  #00125c 0%,
+  #00125c 40%,
+  #1FA6D8 75%,
+  #0D5C8C 100%
+);
+    padding: 0; 
+    line-height: 0; 
+    overflow: hidden; 
 }
 
+.chao img {
+    width: 300px; 
+    max-width: 250px; 
+    height: auto;
+    display: block; 
+    margin: 0 auto; 
+}
 .footer {
-    
-    background-color: #0c4b71;
+    background-color: #001152;
+    margin: auto;
     color: #b3c2cb;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     font-size: 14px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
+
+/*PAGINAÇÃO*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none; 
+  padding: 0px;
+}
+
+.pagination li a {
+  display: block;
+  padding: 4px 10px;
+  text-decoration: none;
+  border: 2px solid #979bae;
+  background-color: #0D5C8C;
+  color: #00125c;
+  margin: 0 4px;
+  border-radius: 5px; 
+}
+
+.pagination li a:hover {
+  background-color: #0D5C8C;
+  color: #b3c2cb;
+}
+
+.pagination li.active a {
+  background-color: #0D5C8C;
+  color: #b3c2cb;
+}
+    
